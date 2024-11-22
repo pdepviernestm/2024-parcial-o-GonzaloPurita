@@ -1,0 +1,48 @@
+import intensamente.*
+
+// TESTS NECESARIOS DEL PUNTO 6)
+
+test "Todas las personas viven un evento y estan por explotar"{
+    const grupoDePersonas = new GrupoPersonas()
+    const furia = new Furia(palabrotas = ["boludazoDelAlma", "noDasMasDeBoludo"])
+    const alegria = new Alegria(intensidad = 100, eventosVividos = [new Evento(impacto = 15, descripcion = "no se")])
+    const tristeza = new Tristeza(intensidad = 100, causa = "nostalgia")
+    const persona1 = new Persona(edad = 22, emociones = [furia, tristeza])
+    const persona2 = new Persona(edad = 22, emociones = [furia])
+    const persona3 = new Persona(edad = 22, emociones = [alegria])
+    grupoDePersonas.agregarPersona(persona1)
+    grupoDePersonas.agregarPersona(persona2)
+    grupoDePersonas.agregarPersona(persona3)
+    grupoDePersonas.vivirEventoEnConjunto(new Evento(impacto = 10, descripcion = "no se"))
+    assert.that(grupoDePersonas.estanPorExplotar())
+}
+
+test "Todas las personas viven un evento y ninguna explota"{
+    const grupoDePersonas = new GrupoPersonas()
+    const furia = new Furia(palabrotas = ["boludo"])
+    const alegria = new Alegria(intensidad = 100, eventosVividos = [new Evento(impacto = 15, descripcion = "no se")])
+    const tristeza = new Tristeza(intensidad = 100, causa = "Melancolia")
+    const persona1 = new Persona(edad = 22, emociones = [furia, tristeza])
+    const persona2 = new Persona(edad = 22, emociones = [furia])
+    const persona3 = new Persona(edad = 22, emociones = [alegria])
+    grupoDePersonas.agregarPersona(persona1)
+    grupoDePersonas.agregarPersona(persona2)
+    grupoDePersonas.agregarPersona(persona3)
+    grupoDePersonas.vivirEventoEnConjunto(new Evento(impacto = 10, descripcion = "no se"))
+    assert.notThat(grupoDePersonas.estanPorExplotar())
+}
+
+test "Todas las personas viven un evento y alguna explota"{ //solo explota persona3
+    const grupoDePersonas = new GrupoPersonas()
+    const furia = new Furia(palabrotas = ["boludo"])
+    const alegria = new Alegria(intensidad = 100, eventosVividos = [new Evento(impacto = 15, descripcion = "no se")])
+    const tristeza = new Tristeza(intensidad = 100, causa = "Melancolia")
+    const persona1 = new Persona(edad = 22, emociones = [furia, tristeza])
+    const persona2 = new Persona(edad = 22, emociones = [furia])
+    const persona3 = new Persona(edad = 22, emociones = [alegria])
+    grupoDePersonas.agregarPersona(persona1)
+    grupoDePersonas.agregarPersona(persona2)
+    grupoDePersonas.agregarPersona(persona3)
+    grupoDePersonas.vivirEventoEnConjunto(new Evento(impacto = 10, descripcion = "no se"))
+    assert.that(grupoDePersonas.algunoEstaPorExplotar())
+}
