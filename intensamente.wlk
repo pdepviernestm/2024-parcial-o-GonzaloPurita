@@ -116,7 +116,7 @@ class Desagrado inherits Emocion{
     override method puedeSerLiberada() = super() && self.eventosExperimentados() > self.getIntensidad()
 }
 
-class Temor inherits Desagrado{  // preferi hacer una clase aparte para Temor y no incluirla con Desagrado, por si en un futuro se diferencian de alguna forma
+class Temor inherits Desagrado{  // preferi hacer una clase aparte para Temor y no hacer una clase DesagradoYTemor, por si en un futuro se diferencian de alguna forma
 
 }
 
