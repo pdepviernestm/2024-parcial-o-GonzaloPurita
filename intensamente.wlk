@@ -96,7 +96,7 @@ class Furia inherits Emocion(intensidad = 100){
 
 class Alegria inherits Emocion{
 
-    override method getIntensidad() = intensidad.abs()
+    override method getIntensidad() = intensidad.abs()  // Para que siempre su intensidad sea positiva
 
     override method puedeSerLiberada() = super() && self.eventosExperimentados().even()
 }
@@ -116,7 +116,7 @@ class Desagrado inherits Emocion{
     override method puedeSerLiberada() = super() && self.eventosExperimentados() > self.getIntensidad()
 }
 
-class Temor inherits Desagrado{
+class Temor inherits Desagrado{  // preferi hacer una clase aparte para Temor y no incluirla con Desagrado, por si en un futuro se diferencian de alguna forma
 
 }
 
